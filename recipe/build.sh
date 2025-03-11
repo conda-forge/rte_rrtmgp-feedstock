@@ -2,11 +2,13 @@
 # Stop on any error
 set -e
 
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* .
+
 BUILD_DIR=build
 BUILD_TYPE=RelWithDebInfo
 
-
-BUILD_TESTING=ON
+BUILD_TESTING=OFF
 BUILD_SHARED_LIBS=ON
 RTE_ENABLE_SP=OFF
 KERNEL_MODE=default

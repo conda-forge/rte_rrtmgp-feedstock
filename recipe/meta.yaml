@@ -23,6 +23,7 @@ requirements:
     - cmake
     - ninja
     - gnuconfig   # [unix]
+    - python
   host:
     - python
     - netcdf4

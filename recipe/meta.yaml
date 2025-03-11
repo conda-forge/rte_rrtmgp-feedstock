@@ -1,13 +1,13 @@
 {% set name = "rte_rrtmgp" %}
-{% set version = "v1.9.0" %}
+{% set version = "v1.9.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v1.9.zip
-  sha256: 7d61d67b562958b4b6824196ac27673e0ecde297878cb948de647d6e4f70bcc8
+  url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v1.9.1.zip
+  sha256: 3dab2f038414bdbead033f743fa80de2817cb3918894d33f2a0f752c9467eeb2
 
 build:
   number: 1

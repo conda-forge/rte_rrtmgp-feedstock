@@ -5,9 +5,6 @@ setlocal ENABLEEXTENSIONS
 set BUILD_DIR=build
 set BUILD_TYPE=RelWithDebInfo
 
-:: set "HOST=x86_64-w64-mingw32"
-:: set "FC=%HOST%-gfortran.exe"
-
 set BUILD_TESTING=OFF
 set BUILD_SHARED_LIBS=ON
 set RTE_ENABLE_SP=OFF

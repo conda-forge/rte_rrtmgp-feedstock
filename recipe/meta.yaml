@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
+  #skip: true  # [win]
 
 
 requirements:
@@ -19,7 +19,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - {{ stdlib('c') }}
+    - {{ stdlib('c') }}   # [not win]
     - cmake
     - ninja
     - gnuconfig   # [unix]

@@ -10,16 +10,14 @@ source:
   sha256: 3dab2f038414bdbead033f743fa80de2817cb3918894d33f2a0f752c9467eeb2
 
 build:
-  number: 0
-  skip: true  # [win]
-
+  number: 1
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('fortran') }}
-    - {{ stdlib('c') }}
+    - {{ stdlib('c') }}   # [not win]
     - cmake
     - ninja
     - gnuconfig   # [unix]

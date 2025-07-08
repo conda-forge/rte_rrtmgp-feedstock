@@ -153,7 +153,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-rte_rrtmgp-green.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-rte__rrtmgp-green.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/rte_rrtmgp.svg)](https://anaconda.org/conda-forge/rte_rrtmgp) |
 
 Installing rte_rrtmgp
 =====================

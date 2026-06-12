@@ -23,11 +23,12 @@ requirements:
         - ${{ compiler('cxx') }}
         - ${{ compiler('fortran') }}
         - ${{ stdlib('c') }}
-    - if: win
-      then: 
+        - test
+      else: 
         - ${{ compiler('m2w64_fortran') }}
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib('m2w64_c') }}
+        - cmd
     - cmake
     - ninja
     - if: unix
@@ -50,8 +51,7 @@ tests:
         then: 
           - test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
           - test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
-      - if: win
-        then: 
+        else: 
           - if not exist "%PREFIX%\bin\librte.dll" exit 1
           - if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
 

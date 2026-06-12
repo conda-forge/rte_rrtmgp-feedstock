@@ -19,21 +19,20 @@ build:
 requirements:
   build:
     - if: not win
-      then: ${{ compiler('cxx') }}
-    - if: not win
-      then: ${{ compiler('fortran') }}
-    - if: not win
-      then: ${{ stdlib('c') }}
+      then: 
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('fortran') }}
+        - ${{ stdlib('c') }}
     - if: win
-      then: ${{ compiler('m2w64_fortran') }}
-    - if: win
-      then: ${{ compiler('m2w64_c') }}
-    - if: win
-      then: ${{ stdlib('m2w64_c') }}
+      then: 
+        - ${{ compiler('m2w64_fortran') }}
+        - ${{ compiler('m2w64_c') }}
+        - ${{ stdlib('m2w64_c') }}
     - cmake
     - ninja
     - if: unix
-      then: gnuconfig
+      then: 
+        - gnuconfig
     - python
   host:
     - python
@@ -48,13 +47,13 @@ requirements:
 tests:
   - script:
       - if: not win
-        then: test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
-      - if: not win
-        then: test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
+        then: 
+          - test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
+          - test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
       - if: win
-        then: if not exist "%PREFIX%\bin\librte.dll" exit 1
-      - if: win
-        then: if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
+        then: 
+          - if not exist "%PREFIX%\bin\librte.dll" exit 1
+          - if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
 
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.
@@ -67,4 +66,3 @@ extra:
   recipe-maintainers:
     - RobertPincus
     - makepath-alex
-

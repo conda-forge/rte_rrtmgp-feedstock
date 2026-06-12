@@ -23,12 +23,10 @@ requirements:
         - ${{ compiler('cxx') }}
         - ${{ compiler('fortran') }}
         - ${{ stdlib('c') }}
-        - test
       else: 
         - ${{ compiler('m2w64_fortran') }}
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib('m2w64_c') }}
-        - cmd
     - cmake
     - ninja
     - if: unix
@@ -44,6 +42,10 @@ requirements:
     - netcdf-fortran >=4.5,<5.0
   run:
     - python
+    - netcdf4
+    - xarray
+    - dask
+    - numpy
 
 tests:
   - script:
@@ -60,7 +62,7 @@ about:
   license: BSD-3-Clause
   license_file: LICENSE.txt
   homepage: https://github.com/earth-system-radiation/rte-rrtmgp
-  documentation: https://earth-system-radiation.github.io/rte-rrtmgp/how-tos/
+  documentation: https://earth-system-radiation.github.io/rte-rrtmgp/
 
 extra:
   recipe-maintainers:

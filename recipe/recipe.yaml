@@ -46,13 +46,15 @@ requirements:
 
 tests:
   - script:
+      content: |
+        test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
+        test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
     if: not win
-    then: 
-      - test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
-      - test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
-    else:
-      - if not exist "%PREFIX%\bin\librte.dll" exit 1
-      - if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
+  - script:
+      content: |
+        if not exist "%PREFIX%\bin\librte.dll" exit 1
+        if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
+    if: win
 
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.

@@ -27,7 +27,7 @@ requirements:
         - ${{ compiler('m2w64_fortran') }}
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib('m2w64_c') }}
-        - cmd.exe
+        - ${{ interpreter }}
     - cmake
     - ninja
     - if: unix
@@ -46,13 +46,13 @@ requirements:
 
 tests:
   - script:
+    if: not win
+    then: 
       - test -f $PREFIX/lib/librte${{ SHLIB_EXT }}
       - test -f $PREFIX/lib/librrtmgp${{ SHLIB_EXT }}
-    if: not win
-  - script:
+    else:
       - if not exist "%PREFIX%\bin\librte.dll" exit 1
       - if not exist "%PREFIX%\bin\librrtmgp.dll" exit 1
-    if: win
 
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.

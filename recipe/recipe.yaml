@@ -27,6 +27,7 @@ requirements:
         - ${{ compiler('m2w64_fortran') }}
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib('m2w64_c') }}
+        - cmd
     - cmake
     - ninja
     - if: unix

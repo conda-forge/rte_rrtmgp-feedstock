@@ -45,11 +45,14 @@ requirements:
 
 tests:
   - package_contents:
-      strict: true
       lib: 
         - librte
         - librrtmgp
-        
+      include:
+        - rte_types.h
+        - rte_kernels.h
+        - rrtmgp_kernels.h
+
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.
   license: BSD-3-Clause

@@ -13,20 +13,18 @@ source:
   url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v${{ version }}.zip
   sha256: b969d8745687de277e29247212a254afef3adcaec19492e580a4541955941542
 
+# In fact Windows builds win using compiler('m2w64_fortran'), compiler('m2w64_c'), stdlib('m2w64_c')
+#   but package_contents aren't found and I can't figure out how to skip tests for 
+#   only one platform 
 build:
   number: 2
+  skip: win
 
 requirements:
   build:
-    - if: not win
-      then: 
-        - ${{ compiler('cxx') }}
-        - ${{ compiler('fortran') }}
-        - ${{ stdlib('c') }}
-      else: 
-        - ${{ compiler('m2w64_fortran') }}
-        - ${{ compiler('m2w64_c') }}
-        - ${{ stdlib('m2w64_c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('fortran') }}
+    - ${{ stdlib('c') }}
     - cmake
     - ninja
     - if: unix
@@ -43,23 +41,15 @@ requirements:
   run:
     - python
 
-#
-# CMake build on Windows claims to be installing the libraries and header files
-#   They aren't found by the rattler test below. Since we aren't using the 
-#   header files to e.g. build the Python front end (haven't gotten Windows 
-#   to work) we'll just skip the error at this time. 
-#
 tests:
-  if: not win
-    then:
-      - package_contents:
-          lib: 
-            - librte
-            - librrtmgp
-          include:
-            - rte_types.h
-            - rte_kernels.h
-            - rrtmgp_kernels.h
+  - package_contents:
+      lib: 
+        - librte
+        - librrtmgp
+      include:
+        - rte_types.h
+        - rte_kernels.h
+        - rrtmgp_kernels.h
 
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.

@@ -1,0 +1,64 @@
+# Check if the files exists
+schema_version: 1
+
+context:
+  name: rte_rrtmgp
+  version: "1.9.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v${{ version }}.zip
+  sha256: b969d8745687de277e29247212a254afef3adcaec19492e580a4541955941542
+
+# In fact Windows builds win using compiler('m2w64_fortran'), compiler('m2w64_c'), stdlib('m2w64_c')
+#   but package_contents aren't found and I can't figure out how to skip tests for 
+#   only one platform 
+build:
+  number: 2
+  skip: win
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('fortran') }}
+    - ${{ stdlib('c') }}
+    - cmake
+    - ninja
+    - if: unix
+      then: 
+        - gnuconfig
+    - python
+    - netcdf-fortran >=4.5,<5.0
+  host:
+    - python
+    - netcdf4
+    - xarray
+    - dask
+    - numpy
+  run:
+    - python
+
+tests:
+  - package_contents:
+      lib: 
+        - librte
+        - librrtmgp
+      include:
+        - rte_types.h
+        - rte_kernels.h
+        - rrtmgp_kernels.h
+
+about:
+  summary: Fortran codes for computing radiative fluxes in planetary atmospheres.
+  license: BSD-3-Clause
+  license_file: LICENSE.txt
+  homepage: https://github.com/earth-system-radiation/rte-rrtmgp
+  documentation: https://earth-system-radiation.github.io/rte-rrtmgp/
+
+extra:
+  recipe-maintainers:
+    - RobertPincus
+    - makepath-alex

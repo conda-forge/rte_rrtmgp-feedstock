@@ -1,5 +1,5 @@
 {% set name = "rte_rrtmgp" %}
-{% set version = "1.9.2" %}
+{% set version = "1.9.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v{{ version }}.zip
-  sha256: b969d8745687de277e29247212a254afef3adcaec19492e580a4541955941542
+  sha256: 260a58842da7c0bb7e20dd0de0e3710604c92b3e528f106e8f2c58445b559e1b
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:

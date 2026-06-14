@@ -5,30 +5,33 @@ setlocal ENABLEEXTENSIONS
 set BUILD_DIR=build
 set BUILD_TYPE=RelWithDebInfo
 
+set BUILD_C_HEADERS=ON
 set BUILD_TESTING=OFF
 set BUILD_SHARED_LIBS=ON
-set RTE_ENABLE_SP=OFF
+set ENABLE_SP=OFF
 set KERNEL_MODE=default
 set FAILURE_THRESHOLD='7.e-4'
 
 :: Ensure the directories exist
 if not exist %BUILD_DIR% mkdir %BUILD_DIR%
-if not exist %PREFIX%/lib mkdir %PREFIX%/lib
-if not exist %PREFIX%/include mkdir %PREFIX%/include
+if not exist %PREFIX%\lib mkdir %PREFIX%\lib
+if not exist %PREFIX%\include mkdir %PREFIX%\include
 
 :: Note: $CMAKE_ARGS is automatically provided by conda-forge. 
 :: It sets default paths and platform-independent CMake arguments.
 cmake -S . -B %BUILD_DIR% ^
       %CMAKE_ARGS% ^
       -DCMAKE_Fortran_COMPILER=%FC% ^
-      -DRTE_ENABLE_SP=%RTE_ENABLE_SP% ^
-      -DKERNEL_MODE=%KERNEL_MODE% ^
-      -DBUILD_TESTING=%BUILD_TESTING% ^
-      -DFAILURE_THRESHOLD=%FAILURE_THRESHOLD% ^
-      -DBUILD_SHARED_LIBS=%BUILD_SHARED_LIBS% ^
       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
       -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+      -DRTE_BUILD_C_HEADERS=%BUILD_C_HEADERS% ^
+      -DRTE_BUILD_SHARED_LIBS=%BUILD_SHARED_LIBS% ^
+      -DRTE_BUILD_TESTING=%BUILD_TESTING% ^
+      -DRTE_ENABLE_SP=%RTE_ENABLE_SP% ^
+      -DRTE_KERNEL_MODE=%KERNEL_MODE% ^
+      -DFAILURE_THRESHOLD=%FAILURE_THRESHOLD% ^
       -G Ninja
+
 if errorlevel 1 exit 1
 
 :: Compile

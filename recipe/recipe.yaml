@@ -3,7 +3,7 @@ schema_version: 1
 
 context:
   name: rte_rrtmgp
-  version: "1.9.2"
+  version: "1.9.3"
 
 package:
   name: ${{ name|lower }}
@@ -11,13 +11,13 @@ package:
 
 source:
   url: https://github.com/earth-system-radiation/rte-rrtmgp/archive/refs/tags/v${{ version }}.zip
-  sha256: b969d8745687de277e29247212a254afef3adcaec19492e580a4541955941542
+  sha256: 260a58842da7c0bb7e20dd0de0e3710604c92b3e528f106e8f2c58445b559e1b
 
 # In fact Windows builds win using compiler('m2w64_fortran'), compiler('m2w64_c'), stdlib('m2w64_c')
 #   but package_contents aren't found and I can't figure out how to skip tests for 
 #   only one platform 
 build:
-  number: 2
+  number: 0
   skip: win
 
 requirements:
@@ -28,7 +28,7 @@ requirements:
     - cmake
     - ninja
     - if: unix
-      then: 
+      then:
         - gnuconfig
     - python
     - netcdf-fortran >=4.5,<5.0
@@ -43,7 +43,7 @@ requirements:
 
 tests:
   - package_contents:
-      lib: 
+      lib:
         - librte
         - librrtmgp
       include:

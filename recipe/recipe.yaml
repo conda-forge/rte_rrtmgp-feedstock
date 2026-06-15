@@ -46,6 +46,8 @@ requirements:
     - python
 
 tests:
+  - script:
+    - ctest --output-on-failure --test-dir ${BUILD_DIR}  -V
   - package_contents:
       lib: 
         - librte
@@ -54,6 +56,8 @@ tests:
         - rte_types.h
         - rte_kernels.h
         - rrtmgp_kernels.h
+      files:
+        - share/rte-rrtmgp/rrtmgp*.nc
 
 about:
   summary: Fortran codes for computing radiative fluxes in planetary atmospheres.

@@ -27,11 +27,15 @@ requirements:
     - ${{ stdlib('c') }}
     - cmake
     - ninja
+    - netcdf-fortran >=4.5,<5.0
     - if: unix
       then: 
         - gnuconfig
     - python
-    - netcdf-fortran >=4.5,<5.0
+    - netcdf4
+    - xarray
+    - dask
+    - numpy
   host:
     - python
     - netcdf4

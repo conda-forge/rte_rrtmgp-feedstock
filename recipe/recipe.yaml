@@ -36,7 +36,6 @@ requirements:
     - dask
     - numpy
   host:
-    - netcdf-fortran >=4.5,<5.0
     - python
     - netcdf4
     - xarray
@@ -46,8 +45,6 @@ requirements:
     - python
 
 tests:
-  - script:
-    - ctest --output-on-failure --test-dir ${BUILD_DIR}  -V
   - package_contents:
       lib: 
         - librte

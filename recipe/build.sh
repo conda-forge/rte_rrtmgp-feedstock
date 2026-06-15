@@ -42,3 +42,6 @@ cmake --build ${BUILD_DIR} --target install -- -v
 
 # Download data to be installed in package
 ctest --output-on-failure --test-dir ${BUILD_DIR} -R fetch_rrtmgp_data
+
+# Run tests (should probably be part of the test section)
+ctest --output-on-failure --test-dir ${BUILD_DIR}  -V

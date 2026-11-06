@@ -17,7 +17,7 @@ source:
 #   but package_contents aren't found and I can't figure out how to skip tests for 
 #   only one platform 
 build:
-  number: 0
+  number: 1
   skip: win
 
 requirements:
@@ -47,7 +47,7 @@ requirements:
 
 tests:
   - package_contents:
-      lib: 
+      lib:
         - librte
         - librrtmgp
       include:
